@@ -1,7 +1,11 @@
 package pl.polcodex;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class _01Subtyping {
     public static void main(String[] args) {
@@ -26,5 +30,17 @@ public class _01Subtyping {
         numbers3.addAll(doubles);
 
         System.out.println(numbers3); // [1, 2, 3, 1.0, 2.0, 3.0]
+
+        List<Object> objects = Stream.of(1,2,3,"tralala").collect(Collectors.toList());
+        List<Integer> integers2 = List.of(7, 8, 9);
+        Collections.copy(objects, integers2);
+
+        System.out.println(objects); // [1, 3, 4, "tralala"]
+        System.out.println(integers2); // [1, 3, 4]
+
+        Collections.<Object>copy(objects, integers2);
+        System.out.println(objects); // [7, 8, 9, "tralala"]
+
+
     }
 }
